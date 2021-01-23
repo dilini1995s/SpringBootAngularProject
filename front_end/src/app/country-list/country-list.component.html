@@ -1,0 +1,69 @@
+<div class="parent">
+      
+    <h3>Countries </h3>
+    <form class="country"> 
+
+        <mat-form-field class="txtField"  >
+          <input matInput placeholder="Country Name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}" required>
+          <mat-error  *ngIf="invalidCountryName">Country Name Name is Required</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field class="txtField">
+            <input matInput placeholder="Country Code" [(ngModel)]="code" [ngModelOptions]="{standalone: true}" required>
+            <mat-error  *ngIf="invalidCode">Country code is Required</mat-error>
+          </mat-form-field>
+    
+        <mat-form-field class="txtField">
+          <input matInput placeholder="Capital" [(ngModel)]="capital" [ngModelOptions]="{standalone: true}" required>
+          <mat-error  *ngIf="invalidCapital">Country Capital is Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="txtField">
+          <input matInput placeholder="Population" [(ngModel)]="population" [ngModelOptions]="{standalone: true}" required>
+          <mat-error  *ngIf="invalidPopulation">Country Population is Required</mat-error>
+        </mat-form-field>
+
+        <button mat-button  (click) = "AddNewCountry()" *ngIf="addButton" > 
+          <mat-icon>playlist_add</mat-icon>
+              Add
+        </button>
+
+        <button mat-button  (click) = "updateWithNewData()" *ngIf="updateButton"> 
+          <mat-icon>done_all</mat-icon>
+            Update
+        </button>
+     
+      </form>
+        <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Country Code</th>
+                        <th scope="col">Capital</th>
+                        <th scope="col">Population</th>
+                    </tr>
+                </thead>
+            
+                <tbody>
+                    <tr *ngFor= "let country of countryList"> 
+                        <td>{{ country.id }}</td>
+                        <td>{{ country.name }}</td>
+                        <td>{{ country.code }}</td>
+                        <td>{{ country.capital }}</td>
+                        <td>{{ country.population }}</td>
+                        <td> 
+                            
+            
+                        <button  class="edit" mat-button (click) = "LoadData(country)">
+                           <mat-icon>edit</mat-icon> 
+                        </button>
+                
+                        <button class="delete" mat-button (click) = "deleteCountry(country.id)">
+                            <mat-icon>delete</mat-icon> 
+                        </button> 
+                        </td>
+                    </tr>
+                </tbody>
+         </table>
+  </div>              
