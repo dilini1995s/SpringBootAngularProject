@@ -18,7 +18,7 @@ name:any;
 code:string;
 capital:string;
 population:number;
-co:any;
+
 private country = new Country();
 private invalidCountryName:boolean;
 private invalidCapital:boolean;
@@ -38,7 +38,7 @@ private invalidPopulation:boolean;
 
   }
   reloadData(){
-    //this.countries=this.countryService.getCountryList();
+    
     this.countryService.getCountryList().subscribe(
       data => {
         this.countryList = data; 
